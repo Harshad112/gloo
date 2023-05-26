@@ -6,8 +6,8 @@ runs:
   using: "composite"
   steps:
   - name: Process Skip Directives
-    run: |
-      go run ./ci/github-actions process-skip-directives
+    shell: bash
+    run: ./ci/github-actions/process-skip-directives/script.sh
   - name: Upload Result Artifact
     uses: actions/upload-artifact@v2
     with:
