@@ -16,9 +16,9 @@ set -ex
 
 echo "SKIP_CI_TESTS=false" > skip-ci.txt
 
-if [[ $(git diff origin/main HEAD --name-only | grep "changelog/" | wc -l) = "1" ]]; then
+if [[ $(git diff main HEAD --name-only | grep "changelog/" | wc -l) = "1" ]]; then
     echo "exactly one changelog added since main"
-    changelogFileName=$(git diff origin/main HEAD --name-only | grep "changelog/")
+    changelogFileName=$(git diff main HEAD --name-only | grep "changelog/")
     echo "changelog file name == $changelogFileName"
     if [[ $(cat $changelogFileName | grep "skipCI: true") ]]; then
         echo "skip CI"
